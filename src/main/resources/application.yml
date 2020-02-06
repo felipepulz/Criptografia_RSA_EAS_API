@@ -1,0 +1,53 @@
+---
+#server
+server:
+  compression:
+    enabled: true
+  connection-timeout: 15s
+  undertow:
+    worker-threads: 128
+    io-threads: 8
+
+# configuracoes do swagger
+springfox:
+  documentation:
+    swagger.v2.path: /swagger.json
+    info.version: @project.version@
+
+#configuracoes da aplicacao
+app:
+  cryptography:
+    types-cryptography:
+      rsa: RSA
+      eas: AES
+      rsa-ecb-pkcs: RSA/ECB/PKCS1Padding
+    keys:
+      secret-key: -----BEGIN PRIVATE KEY-----MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDZL1tQdBjx+nQdk1aB5hWn8eO6iwVDJSsw7bMwSVuBf1ejJaw7KYMnaG7/PR8aob7eru7UMApZehnuXYZ6UQY3GswBsUfzol+2uj1ewySq4SEG+sO8PgN6tM6Qa71zWHgW1/k6Mzb2p4UUTk/UMnVO4XYL4mKF5rcoA+BsbXfUTcK7W8g+gTI0DipwhjnM4alXMSK9WjZ3Ry8j+DbA2clMyNDC9K5UXovbmdXkl5AkyCinKLtNLIl0Bc1y3yCjn+xHguVMTOiKk5vM2ivHQm8u1sedCbZmLflzWYcDoBcEmy6N83phlXuW1iH20bfgjrA7MOciwKW9mO+toubsN0gLAgMBAAECggEBAIsx6dFnhzFXNqJZ8wCwCUMpKa4+OXIuWT8zqTuSWH5nsjBTDc6hLXjNWw5lCxFThvRLo7AE1i1Ar2vxLyYn1dbtasDO8XF5qOSA+qJIabDHNxa1E0wLZsl3JkizdKl/kv/5Dbe6aUiuVwGLq2gxqrOSlsjJICH3m32e9nAnvLwopxq5zU6FyXxC+hhEEZeVAL8I6ege7zKhNVq4w+4hmCR4yucwIpHtXYCJYO8gVEfus0i3ebwwhkmxv1SP96QlSPsCVYk6m9cr0iCdAhAyVPIfUYZijk4YgtTy3WwByKlMrBynXEv3uJnJKy3Yv7G3fAcibnyxATtbKG/RFbz2uxkCgYEA/91b7bZevd9bITQ/abu+20XOFuvWlU2lX5Ve2AxMTbDobXGk/STNXGYLC7pxQIlklmGfuBTeHJChnEItTvipHP9KFWWgtAkD8evjzPMbA9HirMy3Aq4AY41d93U8neAhprXVw8kttbP8090EZ58zJxSCiNiXJnSu0PmqrrRprw0CgYEA2UzCxwU0mT2dkvhtozSJe2qDZdH1xvP7r1Dh5OUq7y8p9k5cdlPyiPljmuu2f9PVQaQUScswg+ago+eamkiean8leFC4qyYcWR0nYXXe/nVZc4aCJuax2Wt9vMY6V2axVpcRx6o1StjlvqplQn2K6xWvnrxCiP3cWmCbmX8wTXcCgYEAkJrbbLKoQuksCM0NlcVM7YI7IosxYHpcn3O9AZ+ZtELqaYhT9dnJ0pG9Zmh9vzqnRbJw4Umx6jT3kWd5UeuJMGE7znH8bCO4Pg7SVS+EMhl54a1lNTd/8sOfus5gbt2QRzb3VEqr8ciCeH6uEZ5Q+6JEz/CRJGPHtUWVaF2AaTUCgYAO2dcqAOoSWwqs47uiftGylJn8WHgiq8QUvENkAGGJzUBh7AMXty8JO3oaOWfUnqahgNQ+Itvi990ctpRzXOkuwBfQfDvSvp0LXhm16HdgDqcZZST6AaRABr+mKioMlSEjmNmHOtO/lMlG2aBoBep7nJTPFXC6qhboOlgICpBDiwKBgDE6vL4RS1CJxEDVHtOoxZnWRldMMITpOAGuUHF2GGpxvQdq6lgYMe2xlEx6GN63y6nXSgoKBbT77GBzgRksM6400IguwlZfp2XJzIr8pkygrTUa/Vruw83BJrVG9u1voT6z8ZyXRNh7/I8c9rZkMOSFgLcRzSh/626G7Et19Pif-----END PRIVATE KEY-----
+      public-key: -----BEGIN PUBLIC KEY-----MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA2S9bUHQY8fp0HZNWgeYVp/HjuosFQyUrMO2zMElbgX9XoyWsOymDJ2hu/z0fGqG+3q7u1DAKWXoZ7l2GelEGNxrMAbFH86Jftro9XsMkquEhBvrDvD4DerTOkGu9c1h4Ftf5OjM29qeFFE5P1DJ1TuF2C+Jihea3KAPgbG131E3Cu1vIPoEyNA4qcIY5zOGpVzEivVo2d0cvI/g2wNnJTMjQwvSuVF6L25nV5JeQJMgopyi7TSyJdAXNct8go5/sR4LlTEzoipObzNorx0JvLtbHnQm2Zi35c1mHA6AXBJsujfN6YZV7ltYh9tG34I6wOzDnIsClvZjvraLm7DdICwIDAQAB-----END PUBLIC KEY-----
+    config:
+      key-size: 128
+
+---
+spring:
+  profiles: local
+  datasource:
+    url: jdbc:h2:file:${java.io.tmpdir}/database_test;Mode=Oracle
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  main:
+    banner-mode: console
+  flyway:
+    enabled: true
+  jpa:
+    properties:
+      hibernate:
+        format_sql:true
+    show-sql: true
+
+logging:
+  level:
+    br.com.exemplo: info
+    org.springframework:
+      boot.context: trace
+      cache: error

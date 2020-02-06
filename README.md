@@ -31,3 +31,21 @@
     copie e cole ele no arquivo application.yml na tag (secret-key).
     
     Faça a mesma coisa no arquivo chave_publica.key porem cole ele na tag (public-key).
+    
+* **5ª Exemplo de chamadas nos controller**    
+
+    Metodo: POST
+    
+    url: http://localhost:8080/cryptography/encrypt
+    
+    body: {"data":"To criptografando um dado."}
+    
+    --------
+    
+    Copie o body da resposta da requisição anterior
+    
+    Metodo: POST
+    
+    url: http://localhost:8080/cryptography/decrypt
+    
+    body: colar o da resposta da requisição anterior
