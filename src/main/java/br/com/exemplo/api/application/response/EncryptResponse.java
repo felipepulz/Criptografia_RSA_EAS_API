@@ -14,7 +14,7 @@ public class EncryptResponse {
 
     @NotBlank(message = "dataEncrypted must be not null")
     String dataEncrypted;
-    @NotBlank(message = "keyMaster must be not null")
-    String keyMaster;
+    @NotBlank(message = "KeyEmitter must be not null")
+    String KeyEmitter;
 
 }

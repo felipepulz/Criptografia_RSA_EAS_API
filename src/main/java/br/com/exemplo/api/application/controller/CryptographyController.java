@@ -24,13 +24,13 @@ class CryptographyController implements CryptographyAPI {
 
     @Override
     public DecryptResponse decrypt(@Valid DecryptRequest request) {
-        return new DecryptResponse(this.decodeManager.decryptData(request.getDataEncrypted().getBytes(), request.getKeyMaster()));
+        return new DecryptResponse(this.decodeManager.decryptData(request.getDataEncrypted().getBytes(), request.getKeyEmitter()));
     }
 
     @Override
     public EncryptResponse encrypt(EncryptRequest request) {
-        String keyEmissor = this.decodeManager.generateKeyEmissor();
-        return new EncryptResponse(this.decodeManager.encryptData(request.getData().getBytes(), keyEmissor), keyEmissor);
+        String keyEmitter = this.decodeManager.generateKeyEmitter();
+        return new EncryptResponse(this.decodeManager.encryptData(request.getData().getBytes(), keyEmitter), keyEmitter);
     }
 
 }

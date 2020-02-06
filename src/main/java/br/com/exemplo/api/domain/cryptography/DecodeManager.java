@@ -35,7 +35,7 @@ public class DecodeManager {
         return managerEAS.loadKeyAES(managerRSA.decrypt(Base64.getDecoder().decode(keyEmissor)));
     }
 
-    public String generateKeyEmissor(){
+    public String generateKeyEmitter(){
         return managerRSA.generateKeyEmitter();
     }
 

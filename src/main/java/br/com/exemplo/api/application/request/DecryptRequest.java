@@ -13,7 +13,7 @@ public class DecryptRequest {
 
     @NotBlank(message = "dataEncrypted must be not null")
     String dataEncrypted;
-    @NotBlank(message = "keyMaster must be not null")
-    String keyMaster;
+    @NotBlank(message = "keyEmitter must be not null")
+    String keyEmitter;
 
 }

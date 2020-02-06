@@ -59,7 +59,7 @@ public class ManagerRSA {
         }
     }
 
-    public void loadPublicKey(String publicKey) {
+    private void loadPublicKey(String publicKey) {
         try {
             this.publicKey = keyFactory.generatePublic(new X509EncodedKeySpec(Base64.getDecoder().decode(publicKey)));
         } catch (Exception e) {
@@ -70,8 +70,7 @@ public class ManagerRSA {
     @SneakyThrows
     public String generateKeyEmitter() {
         SecureRandom srandom = new SecureRandom();
-        byte[] iv = new byte[64 / 8];
-        srandom.nextBytes(iv);
+        srandom.nextBytes(new byte[64 / 8]);
         kgen.init(this.keySize, srandom);
         cipherECB.init(Cipher.ENCRYPT_MODE, this.publicKey);
         return Base64.getEncoder().encodeToString(cipherECB.doFinal(kgen.generateKey().getEncoded()));
